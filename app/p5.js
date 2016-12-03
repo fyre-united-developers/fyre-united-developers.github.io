@@ -8,6 +8,7 @@ module.exports = {
   promptPassword: function(callback) {
     var password = "";
     var p5Dialog = document.getElementById("p5");
+    var p5CurrentCombo = document.getElementById("p5__current-combo")
     var p5State = document.getElementById("p5__state");
     var p5Holder = document.getElementById("p5__holder");
 
@@ -15,6 +16,10 @@ module.exports = {
 
     function displayState(state) {
       p5State.textContent = "Currently: " + state;
+    }
+
+    function updateCombo(gestures) {
+      p5CurrentCombo.textContent = "Current combination: " + gestures.join('-');
     }
 
     new p5(function (p) {
@@ -76,11 +81,11 @@ module.exports = {
           FinalY = difY1+difY2;
           if(p.abs(FinalX-FinalY) > 90){
             if(FinalX>FinalY){
-              displayState('Vertical')
+              displayState('Vertical');
               FinalState = 1;
             }
             if(FinalY>FinalX){
-              displayState('Horizontal')
+              displayState('Horizontal');
               FinalState = 2;
             }
           }
@@ -109,15 +114,13 @@ module.exports = {
           }
           else{
             if(FinalState == 1){
-              ges[count] = 1;
-              horizontalCallback();
+              ges[count] = "Vertical";
             }
             else{
-              ges[count] = 2;
-              verticalCallback();
+              ges[count] = "Horizontal";
             }
             count = count+1;
-            p.print(ges)
+            updateCombo(ges);
           }
         }
       }
