@@ -1,0 +1,27 @@
+{
+  "name": "hackathon-2k16",
+  "version": "0.0.1",
+  "description": "Epic Hackathon 2K16!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyre-united-developers/hackathon-2k16.git"
+  },
+  "keywords": [
+    "hackathon",
+    "ab",
+    "acton",
+    "boxborough",
+    "acton",
+    "boxborough"
+  ],
+  "author": "Fyre United Developers",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fyre-united-developers/hackathon-2k16/issues"
+  },
+  "homepage": "https://github.com/fyre-united-developers/hackathon-2k16#readme"
+}
