@@ -1,8 +1,9 @@
+var glob = require('glob');
 var path = require('path');
 var WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
-    entry: './app/*.js',
+    entry: glob.sync('./app/*.js'),
     devServer: {
         outputPath: path.join(__dirname, './dist')
     },

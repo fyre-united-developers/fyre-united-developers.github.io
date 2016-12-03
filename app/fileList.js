@@ -1,4 +1,5 @@
 var encryption = require('./encryption');
+var p5s = require('./p5');
 
 function downloadURI(uri, name) {
   var link = document.createElement("a");
@@ -30,13 +31,15 @@ function loadFileList() {
     decButton.textContent = "Decrypt";
     decButton.addEventListener("click", function() {
       // Do stuff
-      var potentialDataURI = encryption.decryptToDataURI(file.b64, 'sdfsdsf');
-      if (!potentialDataURI.startsWith("data:")) {
-        alert("Incorrect gesture password!");
-      } else {
-        // Trigger download
-        downloadURI(potentialDataURI, file.name);
-      }
+      p5s.promptPassword(function(password) {
+        var potentialDataURI = encryption.decryptToDataURI(file.b64, password);
+        if (!potentialDataURI.startsWith("data:")) {
+          alert("Incorrect gesture password!");
+        } else {
+          // Trigger download
+          downloadURI(potentialDataURI, file.name);
+        }
+      });
     });
     li.appendChild(decButton);
 
