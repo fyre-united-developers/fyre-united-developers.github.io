@@ -2,7 +2,7 @@ var path = require('path');
 var WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
-    entry: './app/app.js',
+    entry: './app/*.js',
     devServer: {
         outputPath: path.join(__dirname, './dist')
     },
