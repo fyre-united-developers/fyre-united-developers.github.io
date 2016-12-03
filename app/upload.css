@@ -61,8 +61,18 @@ button:active {
 	flex-grow: 2;
 }
 
+.main-header {
+	color: #00FF8F;
+}
+
+.footer {
+	display:flex;
+	justify-content:center;
+	align-items:flex-end;
+}
+
 #manual-text {
-    color: #00FF8F
+    color: #00FF8F;
 }
 
 #filedrag
@@ -84,6 +94,12 @@ button:active {
 	border-color: #00FF8F;
 	border-style: solid;
 	background-color: #008048;
+}
+
+#p5 {
+	background-color: #00b365;
+	border: 5px solid #00FF8F;
+	color: white;
 }
 
 img
