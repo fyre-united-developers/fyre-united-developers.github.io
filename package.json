@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/fyre-united-developers/hackathon-2k16#readme",
   "dependencies": {
-    "p5": "^0.5.4"
-  }
+    "p5": "^0.5.4",
+    "webpack": "^1.13.3"
+   }
 }
