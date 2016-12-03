@@ -25,7 +25,11 @@
   },
   "homepage": "https://github.com/fyre-united-developers/hackathon-2k16#readme",
   "dependencies": {
-    "p5": "^0.5.4",
-    "webpack": "^1.13.3"
-   }
+    "bootstrap": "3",
+    "p5": "^0.5.4"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
 }
