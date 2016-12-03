@@ -28,14 +28,12 @@
 	}
 
 	function ParseFile(file) {
-
 		Output(
 			"<p>File information: <strong>" + file.name +
 			"</strong> type: <strong>" + file.type +
 			"</strong> size: <strong>" + file.size +
 			"</strong> bytes</p>"
 		);
-
 	}
 
 	function Init() {
@@ -53,8 +51,6 @@
 			filedrag.addEventListener("dragleave", FileDragHover, false);
 			filedrag.addEventListener("drop", FileSelectHandler, false);
 			filedrag.style.display = "block";
-
-			submitbutton.style.display = "none";
 		}
 
 	}

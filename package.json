@@ -35,6 +35,7 @@
     "write-file-webpack-plugin": "^3.4.2"
   },
   "devDependencies": {
+    "glob": "^7.1.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   }

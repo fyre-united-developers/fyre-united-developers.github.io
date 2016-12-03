@@ -1,22 +1,49 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>G3STOR3</title>
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-  </head>
-  <body>
-    <h1>G3STOR3</h1>
-    <p class="g3stor3-blurb">Shareable encrypted files using hand gestures</p>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>G3STOR3</title>
+	<link rel="stylesheet" href="app/upload.css">
+	<link rel="stylesheet" href="node_modules/dialog-polyfill/dialog-polyfill.css">
+</head>
+<body>
+	<!-- Header -->
+	<div class="header">
+		<h1 style="display: flex; justify-content: center; align-items: center"><img src="logo.png" width="90"> G3STOR3</h1>
+	</div>
+	<!-- Form -->
+	<div class="container">
+		<div class="form">
+			<form id="encrypt-form">
+				<h2>G3STOR3</h2>
+				<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+				<div>
+					<label id="manual-text" for="fileselect">Get those files:</label>
+					<input class="file-select" type="file" id="fileselect" name="files" multiple="multiple" />
+					<div id="filedrag">Drop dem files a here</div>
+				</div>
+				<div id="submitbutton">
+					<button class="clicky-button" type="submit">Upload dem files?</button>
+				</div>
+			</form>
+		</div>
 
-    <form id="encrypt-form">
-      <input type="file" name="files">
-      <input type="submit" value="Submit">
-    </form>
+		<!-- messages -->
+		<div id="messages">
+			<h2>The List of the Files</h2>
 
-    <ul id="enc-files-list"></ul>
-    <div id="p5-holder" hidden></div>
-    <script src="dist/app.bundle.js"></script>
-  </body>
+			<ul id="enc-files-list"></ul>
+		</div>
+	</div>
+
+	<dialog id="p5">
+		<p>First, press SPACE to take a reference frame. Then move your hand to the top right corner of your camera to take a gesture snapshot.</p>
+		<p id="p5__state"></p>
+		<div id="p5__holder"></div>
+	</dialog>
+
+	<script src="node_modules/dialog-polyfill/dialog-polyfill.js"></script>
+	<script src="dist/app.bundle.js"></script>
+
+</body>
 </html>

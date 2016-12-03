@@ -1,12 +1,21 @@
 var p5 = require('p5');
 p5.dom = require('p5/lib/addons/p5.dom');
 
+
+
+
 module.exports = {
   promptPassword: function(callback) {
     var password = "";
-    var p5Holder = document.getElementById("p5-holder");
+    var p5Dialog = document.getElementById("p5");
+    var p5State = document.getElementById("p5__state");
+    var p5Holder = document.getElementById("p5__holder");
 
     p5Holder.hidden = false;
+
+    function displayState(state) {
+      p5State.textContent = "Currently: " + state;
+    }
 
     new p5(function (p) {
       var video;
@@ -18,22 +27,72 @@ module.exports = {
       var actualy1 = [];
       var actualx2 = [];
       var actualy2 = [];
+      var FinalState = 0;
+      var ges = [];
+      var count = 0;
       var reference_state = false;
       p.setup = function() {
         require('./blurAll')();
-        p.createCanvas(320,240).parent('p5-holder');
-        video = p.createCapture(p.VIDEO).parent('p5-holder');
+        dialogPolyfill.registerDialog(p5Dialog);
+        p5Dialog.showModal();
+        p.createCanvas(320,240).parent('p5__holder');
+        video = p.createCapture(p.VIDEO).parent('p5__holder');
         video.size(320,240);
-      }
+      };
 
       p.draw = function() {
-        p.rect(400,100,300,200)
+          if(reference_state == true){
+          var difX1 = 0;
+          var difY1 = 0;
+          var difX2 = 0;
+          var difY2 = 0;
+          var FinalX = 0;
+          var FinalY = 0;
+          p.image(video,0,0);
+           for(var x = 0;x<20;x++){
+            actualx1[x] = p.get(x*16,10)[0];
+            actualx2[x] = p.get(x*16,230)[0];
+          }
+
+          for(var y = 0;y<16;y++){
+            actualy1[y] = p.get(10,y*15)[0];
+            actualy2[y] = p.get(310,y*15)[0];
+          }
+
+
+          for(var i = 0;i<20;i++){
+            difX1 = (p.abs(referencex1[i]-actualx1[i]))+difX1;
+            difX2 = (p.abs(referencex2[i]-actualx2[i]))+difX2;
+
+
+          }
+          for(var j = 0; j<15;j++){
+            difY1 = (p.abs(referencey1[j]-actualy1[j]))+difY1;
+            difY2 = (p.abs(referencey2[j]-actualy2[j]))+difY2;
+          }
+
+
+          FinalX = difX1+difX2;
+          FinalY = difY1+difY2;
+          if(p.abs(FinalX-FinalY) > 90){
+            if(FinalX>FinalY){
+              displayState('Vertical')
+              FinalState = 1;
+            }
+            if(FinalY>FinalX){
+              displayState('Horizontal')
+              FinalState = 2;
+            }
+          }
+          }
+
       }
 
-      p.keyPressed = function() {
+      p.keyPressed = function(){
         if (p.keyCode === p.ENTER) {
           p.remove();
-          callback(password);
+          p5Dialog.close();
+          callback(ges.join(''));
         } else {
           if(reference_state == false){
             p.image(video,0,0);
@@ -49,52 +108,16 @@ module.exports = {
             reference_state = true;
           }
           else{
-            var difX1 = 0;
-            var difY1 = 0;
-            var difX2 = 0;
-            var difY2 = 0;
-            var FinalX = 0;
-            var FinalY = 0;
-            p.line(0,10,320,10);
-            p.line(0,230,320,230);
-            p.line(10,0,10,240);
-            p.line(320,0,320,240);
-            p.image(video,0,0);
-            for(var x = 0;x<20;x++){
-              actualx1[x] = p.get(x*16,10)[0];
-              actualx2[x] = p.get(x*16,230)[0];
+            if(FinalState == 1){
+              ges[count] = 1;
+              horizontalCallback();
             }
-
-            for(var y = 0;y<16;y++){
-              actualy1[y] = p.get(10,y*15)[0];
-              actualy2[y] = p.get(310,y*15)[0];
+            else{
+              ges[count] = 2;
+              verticalCallback();
             }
-
-
-            for(var i = 0;i<20;i++){
-              difX1 = (p.abs(referencex1[i]-actualx1[i]))+difX1;
-              difX2 = (p.abs(referencex2[i]-actualx2[i]))+difX2;
-
-
-            }
-            for(var j = 0; j<15;j++){
-              difY1 = (p.abs(referencey1[j]-actualy1[j]))+difY1;
-              difY2 = (p.abs(referencey2[j]-actualy2[j]))+difY2;
-            }
-
-
-            FinalX = difX1+difX2;
-            FinalY = difY1+difY2;
-            if(p.abs(FinalX-FinalY) > 90){
-              if(FinalX>FinalY){
-                password += 'v';
-                console.log('v');
-              }
-              if(FinalY>FinalX){
-                password += 'h';
-                console.log('h');
-              }
-            }
+            count = count+1;
+            p.print(ges)
           }
         }
       }
