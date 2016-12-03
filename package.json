@@ -27,15 +27,12 @@
   "homepage": "https://github.com/fyre-united-developers/hackathon-2k16#readme",
   "dependencies": {
     "bootstrap": "3",
-
+    "crypto-js": "^3.1.8",
+    "dialog-polyfill": "^0.4.5",
     "jQuery": "^1.7.4",
     "modernizr": "^3.3.1",
-
-
-    "crypto-js": "^3.1.8",
     "p5": "^0.5.4",
     "write-file-webpack-plugin": "^3.4.2"
-
   },
   "devDependencies": {
     "webpack": "^1.13.3",
