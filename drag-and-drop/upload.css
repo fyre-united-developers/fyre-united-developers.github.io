@@ -1,0 +1,118 @@
+@font-face {
+	font-family: 'Market Fresh';
+	src: url('MarketFresh.eot');
+	src: url('MarketFresh.eot?#iefix') format('embedded-opentype'),
+		url('MarketFresh.woff') format('woff'),
+		url('MarketFresh.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body
+{
+	font-family: 'Market Fresh', Tahoma, Helvetica, freesans, sans-serif;
+	font-size: 90%;
+	margin: 10px;
+	color: #333;
+	background-color: #fff;
+}
+
+h1, h2
+{
+	font-size: 1.5em;
+	font-weight: normal;
+}
+
+h2
+{
+	font-size: 1.3em;
+}
+
+fieldset {
+    background-color: #00b365;
+    border: 5px solid #00FF8F
+}
+
+legend {
+	font-weight: bold;
+	color: #00FF8F;
+}
+
+#manual-text {
+    color: #00FF8F
+}
+
+#filedrag
+{
+	display: none;
+	font-weight: bold;
+	text-align: center;
+	padding: 1em 0;
+	margin: 1em 0;
+	color: #00FF8F;
+	border: 2px dashed #00FF8F;
+	border-radius: 7px;
+	cursor: default;
+}
+
+#filedrag.hover
+{
+	color: #00FF8F;
+	border-color: #00FF8F;
+	border-style: solid;
+	background-color: #008048;
+}
+
+img
+{
+	max-width: 100%;
+}
+
+pre
+{
+	width: 95%;
+	height: 8em;
+	font-family: 'Market Fresh';
+	font-size: 0.9em;
+	padding: 1px 2px;
+	margin: 0 0 1em auto;
+	border: 1px inset #666;
+	background-color: #eee;
+	overflow: auto;
+}
+
+.file-select {
+    font-family: 'Market Fresh';
+    font-weight: bold;
+    color: #00FF8F;
+}
+
+#messages
+{
+	padding: 0 10px;
+	margin: 1em 0;
+    background-color: #00b365;
+    border: 5px solid #00FF8F;
+    color: #00FF8F;
+}
+
+#progress p
+{
+	display: block;
+	width: 240px;
+	padding: 2px 5px;
+	margin: 2px 0;
+	border: 1px inset #446;
+	border-radius: 5px;
+	background: #eee url("progress.png") 100% 0 repeat-y;
+}
+
+#progress p.success
+{
+	background: #0c0 none 0 0 no-repeat;
+}
+
+#progress p.failed
+{
+	background: #c00 none 0 0 no-repeat;
+}

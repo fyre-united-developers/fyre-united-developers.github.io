@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>G3STOR3</title>
+<link rel="stylesheet" type="text/css" media="all" href="upload.css" />
+</head>
+<body>
+
+<form id="upload" action="index.html" method="POST" enctype="multipart/form-data">
+
+<fieldset>
+<legend>G3STOR3</legend>
+
+<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+
+<div>
+	<label id="manual-text" for="fileselect">Get those files:</label>
+	<input class = "file-select" type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+	<div id="filedrag">Drop dem files a here:</div>
+</div>
+
+<div id="submitbutton">
+	<button type="submit">Upload dem files?</button>
+</div>
+
+</fieldset>
+
+</form>
+
+<div id="messages">
+<p>The Messages of Status</p>
+</div>
+
+<script src="upload.js"></script>
+</body>
+</html>
