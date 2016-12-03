@@ -12,8 +12,6 @@ module.exports = {
     var p5State = document.getElementById("p5__state");
     var p5Holder = document.getElementById("p5__holder");
 
-    p5Holder.hidden = false;
-
     function displayState(state) {
       p5State.textContent = "Currently: " + state;
     }
@@ -21,6 +19,10 @@ module.exports = {
     function updateCombo(gestures) {
       p5CurrentCombo.textContent = "Current combination: " + gestures.join('-');
     }
+
+    p5Holder.hidden = false;
+    updateCombo([]);
+    displayState("taking reference frame");
 
     new p5(function (p) {
       var video;
@@ -36,6 +38,15 @@ module.exports = {
       var ges = [];
       var count = 0;
       var reference_state = false;
+
+      function cleanup() {
+        p.remove();
+        p5.innerHTML = "";
+        p5Dialog.removeEventListener('cancel', this);
+      }
+
+      p5Dialog.addEventListener('cancel', cleanup);
+
       p.setup = function() {
         require('./blurAll')();
         dialogPolyfill.registerDialog(p5Dialog);
@@ -95,8 +106,8 @@ module.exports = {
 
       p.keyPressed = function(){
         if (p.keyCode === p.ENTER) {
-          p.remove();
           p5Dialog.close();
+          cleanup();
           callback(ges.join(''));
         } else {
           if(reference_state == false){

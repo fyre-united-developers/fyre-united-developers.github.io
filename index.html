@@ -19,7 +19,7 @@
 				<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
 				<div>
 					<label id="manual-text" for="fileselect">Get those files:</label>
-					<input class="file-select" type="file" id="fileselect" name="files" multiple="multiple" />
+					<input class="file-select" type="file" id="fileselect" name="files" multiple>
 					<div id="filedrag">Drop dem files a here</div>
 				</div>
 				<div id="submitbutton">
@@ -33,11 +33,17 @@
 			<h2>The List of the Files</h2>
 
 			<ul id="enc-files-list"></ul>
+
+			<form id="decrypt-form">
+				<input type="file" name="files" multiple><button type="submit">Upload Encrypted Files</button>
 		</div>
 	</div>
 
 	<dialog id="p5">
-		<p>First, press SPACE to take a reference frame. Then move your hand to the top right corner of your camera to take a gesture snapshot.</p>
+		<p>
+			First, press SPACE to take a reference frame. Then move your hand to the
+			top right corner of your camera to take a gesture snapshot.
+		</p>
 		<p id="p5__state"></p>
 		<p id="p5__current-combo">Current combination: [none]</p>
 		<div id="p5__holder"></div>
