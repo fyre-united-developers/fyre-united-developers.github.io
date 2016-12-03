@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/fyre-united-developers/hackathon-2k16/issues"
   },
-  "homepage": "https://github.com/fyre-united-developers/hackathon-2k16#readme"
+  "homepage": "https://github.com/fyre-united-developers/hackathon-2k16#readme",
+  "dependencies": {
+    "p5": "^0.5.4"
+  }
 }
