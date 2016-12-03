@@ -32,12 +32,11 @@ function loadFileList() {
     decButton.addEventListener("click", function() {
       // Do stuff
       p5s.promptPassword(function(password) {
-        var potentialDataURI = encryption.decryptToDataURI(file.b64, password);
-        if (!potentialDataURI.startsWith("data:")) {
-          alert("Incorrect gesture password!");
-        } else {
-          // Trigger download
+        try {
+          var potentialDataURI = encryption.decryptToDataURI(file.b64, password);
           downloadURI(potentialDataURI, file.name);
+        } catch (e) {
+          alert("Incorrect gesture password!");
         }
       });
     });

@@ -14,5 +14,24 @@ encryptForm.addEventListener("submit", function(e) {
       });
     });
   });
+  return false;
 }, true);
+
+var decryptForm = document.getElementById("decrypt-form");
+decryptForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  Array.prototype.forEach.call(decryptForm.files.files, function(file) {
+    encryption.getDataURI(file, function(dataURI) {
+      fetch(dataURI).then(function(response) {
+        return response.text();
+      }).then(function(text) {
+        console.log(text);
+        fileList.addEncryptedFileEntry(file.name, text);
+      });
+    });
+  });
+  return false;
+}, true);
+
 fileList.loadFileList();
