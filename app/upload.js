@@ -23,6 +23,7 @@
 
 		for (var i = 0, f; f = files[i]; i++) {
 			ParseFile(f);
+			$id("fileselect").files.push(f);
 		}
 
 	}
